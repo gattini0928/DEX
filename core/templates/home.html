@@ -4,9 +4,20 @@
 {% block title %}DEX{% endblock %}
 
 {% block css %}
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 
 {% block content %}
 {% include "navbar.html" %}
+<main>
+    <div class="titles">
+        <h2><strong>D</strong>eveloper <strong>EX</strong>plorer</h2>
+        <h3>Pesquise e Crie seu Mapa de Estudos</h3>
+    </div>
+    <form method="GET" action="" class="search-form">
+        <input type="text" class="search-input" name="search" placeholder="DEXplore...">
+        <button type="submit" class="search-btn"><i class="search-icon" data-lucide="search-code"></i></button>
+    </form>
+</main>
 {% endblock %}
