@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Login {% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/forms.css' %}"> {% endblock %}
+{% block content%}
+{% include "navbar.html" %}
+<main>
+    <div class="title-logo">
+        <div class="img-wrapper">
+            <img src="{% static 'images/dex-logo.png' %}" class="dex-logo" alt="DEX Logo">
+        </div>
+            <h2 class="title">Login</h2>
+        </div>
+    <form action="" method="POST" class="login-form">
+        <div class="inputs-labels">
+            <label for="email"><i class="label-icon" data-lucide="mail"></i></label>
+            <input type="email" class="login-input" name="email" id="email" required placeholder="Seu Email">
+        </div>
+        <div class="inputs-labels">
+            <label for="password"> <i class="label-icon" data-lucide="key"></i></label>
+            <input type="text"  class="login-input" name="password" id="password" required placeholder="Sua Senha">
+        </div>
+        <button type="submit" class="login-btn"><i class="login-icon" data-lucide="power"></i> </button>
+    </form>
+    <footer>
+        <p class="copyright">DEX © 2026 — Open Source</p>
+    </footer>
+</main>
+{% endblock %}

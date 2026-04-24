@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Criar Conta {% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/forms.css' %}"> {% endblock %}
+{% block content%}
+{% include "navbar.html" %}
+<main>
+    <div class="title-logo">
+        <div class="img-wrapper">
+            <img src="{% static 'images/dex-logo.png' %}" class="dex-logo" alt="DEX Logo">
+        </div>
+            <h2 class="title">Criar Conta</h2>
+        </div>
+    <form action="" method="POST" class="signup-form">
+        <div class="inputs-labels">
+            <label for="username"><i class="label-icon" data-lucide="user-star"></i> </label>
+            <input type="text" class="signup-input" name="username" id="username" required placeholder="Username">
+        </div>
+        <div class="inputs-labels">
+            <label for="email"><i class="label-icon" data-lucide="mail"></i></label>
+            <input type="email" class="signup-input" name="email" id="email" required placeholder="Email ">
+        </div>
+        <div class="inputs-labels">
+            <label for="password"> <i class="label-icon" data-lucide="key"></i></label>
+            <input type="text"  class="signup-input" name="password" id="password" required placeholder="Senha">
+        </div>
+        <div class="inputs-labels">
+            <label for="password"> <i class="label-icon" data-lucide="key"></i></label>
+            <input type="text"  class="signup-input" name="password" id="password" required placeholder="Confirme sua Senha">
+        </div>
+        <button type="submit" class="signup-btn"><i class="signup-icon" data-lucide="user-round-plus"></i> </button>
+    </form>
+    <footer>
+        <p class="copyright">DEX © 2026 — Open Source</p>
+    </footer>
+</main>
+{% endblock %}

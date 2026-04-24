@@ -1,0 +1,108 @@
+main {
+    font-family: "DM Sans", sans-serif;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 auto;
+    padding: 2rem;
+    width: 100%;
+    height: 100vh;
+}
+
+.img-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.dex-logo {
+    height: auto;
+    width: 10rem;
+    object-fit: contain;
+}
+
+.title-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 0 auto;
+    padding: 0.5rem 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.login-form, .signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 70%;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 0.4rem;
+    padding: 3rem;
+}
+
+.inputs-labels {
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.label-icon {
+    color: #0b6f59;
+}
+
+.login-input, .signup-input {
+    width: 100%;
+    color: #dfdfd6;
+    background-color: #1b1b1e;
+    transition: all 0.3s ease-in-out;
+    border-bottom: solid 1px #20C7A1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    padding: 1rem;
+    border-radius: 0.4rem;
+}
+
+
+.login-input, .signup-input:hover,
+.login-input:focus,.signup-input:focus {
+    background-color: #26262a;
+}
+
+.login-btn, .signup-btn {
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    transition: all 0.3s ease-in-out;
+    padding: 0.5rem 1rem;
+    border-radius: 0.4rem;
+}
+
+.login-btn:hover,
+.login-btn:focus,
+.signup-btn:hover,
+.signup-btn:focus {
+    background-color: #1b1b1e;
+    border-bottom: solid 1px #20C7A1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.login-icon, .signup-icon {
+    color: #2cba94;
+}
+
+.copyright {
+    color: #2cba94;
+    font-style:italic;
+    font-weight: bold;
+}
