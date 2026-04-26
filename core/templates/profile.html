@@ -1,10 +1,60 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} Perfil {% endblock %}
-{% block css %} <link rel="stylesheet" href="{% static 'css/forms.css' %}"> {% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/profile.css' %}"> {% endblock %}
 {% block content%}
 {% include "navbar.html" %}
 <main>
-
-</main>
+    <h2 class="title"><span class="username">@gattini0928</span> - Suas Pesquisas <i class="icon" data-lucide="laptop"></i> </h2>
+    <div class="container-searches">
+        <div class="container-search">
+            <form method="GET" action="" class="search-form">
+                <input type="text" class="search-input" name="search" placeholder="DEXplore...">
+                <button type="submit" class="search-btn"><i class="search-icon" data-lucide="search-code"></i></button>
+            </form>
+        </div>
+        <div class="tags-container">
+            <span class="title-tags">Pesquisa por Tags <i class="icon" data-lucide="move-right"></i></span>
+            {% comment %} {{for tag in tags}} {% endcomment %}
+            <div class="tags">
+                <div class="tag">
+                    <i class="icon" data-lucide="tag"></i>
+                    <span class="tag-name">GO</span>
+                    {% comment %} {{tag}}  {% endcomment %}
+                </div>
+                <div class="tag">
+                    <i class="icon" data-lucide="tag"></i>
+                    <span class="tag-name">Python</span>
+                    {% comment %} {{tag}}  {% endcomment %}
+                </div>
+                <div class="tag">
+                    <i class="icon" data-lucide="tag"></i>
+                    <span class="tag-name">PostgreSQL</span>
+                    {% comment %} {{tag}}  {% endcomment %}
+                </div>
+                {% comment %} {% endfor %} {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <div class="searches">
+        <div class="cards">
+            {% comment %} {% for search in searches %} {% endcomment %}
+            <div class="card">
+                <span>Como usar JOIN no PostgreSQL</span>
+                <a href="{% url 'core:search_detail_t' %}" class="detail-link">Ver Detalhes <i class="icon" data-lucide="file-code"></i>  </a>
+                {% comment %} {{search.title}}
+                <a href="{% url 'search_detail' search.slug search.id %}"><i class="icon" data-lucide="file-code"></i> </a> {% endcomment %}
+            </div>
+            <div class="card">
+                <span>Como implementar uma Gourotine em GO</span>
+                <a href="{% url 'core:search_detail_t' %}" class="detail-link">Ver Detalhes <i class="icon" data-lucide="file-code"></i> </a>
+                {% comment %} {{search.title}}
+                <a href="{% url 'search_detail' search.slug search.id %}"><i class="icon" data-lucide="file-code"></i> </a> {% endcomment %}
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p class="copyright">DEX © 2026 — Open Source</p>
+    </footer>
+</main> 
 {% endblock %}

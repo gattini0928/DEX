@@ -16,5 +16,14 @@ def profile(request):
     return render(request, "profile.html")
 
 @login_required
+def search_detail(request):
+    return render(request, "search_detail.html")
+
+@login_required
+def search_detail_t(request):
+    return render(request, "search_detail.html")
+
+
+@login_required
 def logout(request):
     return redirect("core:login")

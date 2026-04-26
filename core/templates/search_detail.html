@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Perfil {% endblock %}
+{% block css %} 
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+<link rel="stylesheet" href="{% static 'css/search_detail.css' %}"> {% endblock %}
+{% block content%}
+{% include "navbar.html" %}
+<main>
+    <h2>Goroutine</h2>
+    <div class="containers">
+        <div class="container">
+            <h2 class="h2">O que é:</h2>
+            <p class="text">Lorem Ipsum is simply dummy text of
+                the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy
+                text ever since the 1500s, when an unknown printer
+                took a galley of type and scrambled it to make a
+                type specimen book. It has survived not only five
+                centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div class="container">
+            <h2 class="h2">Como funciona:</h2>
+            <p class="text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae suscipit libero voluptatem a molestias, unde soluta deserunt blanditiis optio, fuga similique harum ad culpa? Eius dolore ex odit quo consequuntur.</p>
+        </div>
+        <div class="container code-cointaner">
+            <h2 class="h2">Código Exemplo:</h2>
+            <pre>
+                <code>
+                    for i in range(list):
+                        print(i)
+                </code>
+            </pre>
+        </div>
+        <div class="container">
+            <h2 class="h2">Quando usar:</h2>
+                <p class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Suscipit inventore porro, optio repellat ipsum quibusdam incidunt! Quasi, excepturi laboriosam commodi cumque ea corporis quas. Excepturi vel quos quibusdam doloremque aut.</p>
+        </div>
+    </div>
+    <footer>
+        <p class="copyright">DEX © 2026 — Open Source</p>
+    </footer>
+</main> 
+{% endblock %}
