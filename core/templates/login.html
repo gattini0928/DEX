@@ -10,11 +10,12 @@
             <img src="{% static 'images/dex-logo.png' %}" class="dex-logo" alt="DEX Logo">
         </div>
             <h2 class="title">Login</h2>
-        </div>
-    <form action="" method="POST" class="login-form">
+    </div>
+    <form action="{% url 'core:login' %}" method="POST" class="login-form">
+        {% csrf_token %}
         <div class="inputs-labels">
-            <label for="email"><i class="label-icon" data-lucide="mail"></i></label>
-            <input type="email" class="login-input" name="email" id="email" required placeholder="Seu Email">
+            <label for="username"><i class="label-icon" data-lucide="user-star"></i></label>
+            <input type="text" class="login-input" name="username" id="username" required placeholder="Seu Username">
         </div>
         <div class="inputs-labels">
             <label for="password"> <i class="label-icon" data-lucide="key"></i></label>

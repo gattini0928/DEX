@@ -4,15 +4,8 @@
         <img src="{% static 'images/dex-logo.png' %}" class="dex-logo" alt="DEX Logo">
     </div>
     <nav class="navbar">
-        <div class="nav-link-icon">
-            <i class="icon" data-lucide="power"></i> 
-            <a href="{% url 'core:login' %}" class="nav-link">Login</a>
-        </div>
-        <div class="nav-link-icon">
-            <i class="icon" data-lucide="user-round-plus"></i> 
-            <a href="{% url 'core:signup' %}" class="nav-link">Criar Conta</a>
-        </div>
-        <span class="username">@gattini0928</span>
+        {% if user.is_authenticated %}
+        <span class="username">{{user.username}}</span>
         <div class="nav-link-icon">
             <i class="icon" data-lucide="user"></i> 
             <a href="{% url 'core:profile' %}" class="nav-link">Perfil</a>
@@ -21,5 +14,15 @@
             <i class="icon" data-lucide="log-out"></i>  
             <a href="{% url 'core:logout' %}" class="nav-link">Logout</a>
         </div>
+        {% else %}
+        <div class="nav-link-icon">
+            <i class="icon" data-lucide="power"></i> 
+            <a href="{% url 'core:login' %}" class="nav-link">Login</a>
+        </div>
+        <div class="nav-link-icon">
+            <i class="icon" data-lucide="user-round-plus"></i> 
+            <a href="{% url 'core:signup' %}" class="nav-link">Criar Conta</a>
+        </div>
+        {% endif %}
     </nav>
 </header>

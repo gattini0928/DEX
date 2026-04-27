@@ -5,7 +5,7 @@
 {% block content%}
 {% include "navbar.html" %}
 <main>
-    <h2 class="title"><span class="username">@gattini0928</span> - Suas Pesquisas <i class="icon" data-lucide="laptop"></i> </h2>
+    <h2 class="title"><span class="username">{{user.username}}</span> - Suas Pesquisas <i class="icon" data-lucide="laptop"></i> </h2>
     <div class="container-searches">
         <div class="container-search">
             <form method="GET" action="" class="search-form">
