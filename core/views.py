@@ -6,11 +6,31 @@ from .forms import SignupForm, LoginForm
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth import authenticate
+from agent import search as get_search 
+from .models import Search, Tag
 
 User = get_user_model()
 
 def home(request):
-    return render(request, "home.html")
+    data = None
+    message = request.GET.get("search")
+    
+    if message:
+        data = get_search(message)
+        
+        tag, _ = Tag.objects.get_or_create(name=data["tag"])
+        
+        Search.objects.create(
+            user=request.user,
+            tag=tag,
+            query=message,
+            what_is=data["what_is"],
+            how_it_works=data["how_it_works"],
+            code_example=data["code_example"],
+            when_to_use=data["when_to_use"],
+        )
+
+    return render(request, "home.html", {"data": data})
 
 def signup(request):
     if request.method == "POST":
