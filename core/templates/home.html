@@ -18,6 +18,9 @@
         <input type="text" class="search-input" name="search" placeholder="DEXplore...">
         <button type="submit" class="search-btn"><i class="search-icon" data-lucide="search-code"></i></button>
     </form>
+    {% if not data %}
+        <span style="margin: 0 auto;">Faça uma pesquisa!</span>
+    {% else %}
     <div class="containers">
         <div class="container">
             <h2 class="h2">O que é:</h2>
@@ -40,6 +43,7 @@
                 <p class="text">{{data.when_to_use}}</p>
         </div>
     </div>
+    {% endif %}
     <footer>
         <p class="copyright">DEX © 2026 — Open Source</p>
     </footer>
