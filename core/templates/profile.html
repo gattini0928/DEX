@@ -8,50 +8,40 @@
     <h2 class="title"><span class="username">{{user.username}}</span> - Suas Pesquisas <i class="icon" data-lucide="laptop"></i> </h2>
     <div class="container-searches">
         <div class="container-search">
-            <form method="GET" action="" class="search-form">
+            <form method="GET" action="{% url  'core:profile' %}" class="search-form">
                 <input type="text" class="search-input" name="search" placeholder="DEXplore...">
                 <button type="submit" class="search-btn"><i class="search-icon" data-lucide="search-code"></i></button>
             </form>
         </div>
         <div class="tags-container">
             <span class="title-tags">Pesquisa por Tags <i class="icon" data-lucide="move-right"></i></span>
-            {% comment %} {{for tag in tags}} {% endcomment %}
+            {% if tags %}
+            {% for tag in tags %}
             <div class="tags">
                 <div class="tag">
                     <i class="icon" data-lucide="tag"></i>
-                    <span class="tag-name">GO</span>
-                    {% comment %} {{tag}}  {% endcomment %}
+                    <span class="tag-name">{{tag.name}}</span>
                 </div>
-                <div class="tag">
-                    <i class="icon" data-lucide="tag"></i>
-                    <span class="tag-name">Python</span>
-                    {% comment %} {{tag}}  {% endcomment %}
-                </div>
-                <div class="tag">
-                    <i class="icon" data-lucide="tag"></i>
-                    <span class="tag-name">PostgreSQL</span>
-                    {% comment %} {{tag}}  {% endcomment %}
-                </div>
-                {% comment %} {% endfor %} {% endcomment %}
+                {% endfor %}
             </div>
+            {% else %}
+                <p>Você ainda não realizou nenhuma pesquisa, consequente ainda não possui filtro por tags</p>
+            {% endif %}
         </div>
     </div>
     <div class="searches">
+        {% if searches %}
         <div class="cards">
-            {% comment %} {% for search in searches %} {% endcomment %}
+            {% for search in searches %}
             <div class="card">
-                <span>Como usar JOIN no PostgreSQL</span>
-                <a href="{% url 'core:search_detail_t' %}" class="detail-link">Ver Detalhes <i class="icon" data-lucide="file-code"></i>  </a>
-                {% comment %} {{search.title}}
-                <a href="{% url 'search_detail' search.slug search.id %}"><i class="icon" data-lucide="file-code"></i> </a> {% endcomment %}
+                <span>{{search.query}}</span>
+                <a href="{% url 'core:search_detail' search.slug search.id %}" class="detail-link">Ver Detalhes <i class="icon" data-lucide="file-code"></i>  </a>
             </div>
-            <div class="card">
-                <span>Como implementar uma Gourotine em GO</span>
-                <a href="{% url 'core:search_detail_t' %}" class="detail-link">Ver Detalhes <i class="icon" data-lucide="file-code"></i> </a>
-                {% comment %} {{search.title}}
-                <a href="{% url 'search_detail' search.slug search.id %}"><i class="icon" data-lucide="file-code"></i> </a> {% endcomment %}
-            </div>
+            {% endfor %}
         </div>
+        {% else %}
+            <p>Você ainda não realizou nenhuma pesquisa.</p>
+        {% endif %}
     </div>
     <footer>
         <p class="copyright">DEX © 2026 — Open Source</p>

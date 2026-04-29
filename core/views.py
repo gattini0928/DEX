@@ -6,8 +6,9 @@ from .forms import SignupForm, LoginForm
 from django.contrib.auth import login as django_login
 from django.contrib.auth import logout as django_logout
 from django.contrib.auth import authenticate
-from agent import search as get_search 
+from .agent import search as get_search 
 from .models import Search, Tag
+from django.shortcuts import get_object_or_404
 
 User = get_user_model()
 
@@ -62,15 +63,18 @@ def login(request):
 
 @login_required
 def profile(request):
-    return render(request, "profile.html")
+    search_query = request.GET.get("search")
+    if search_query:
+        searches = Search.objects.filter(user=request.user, query__icontains=search_query)
+    else:
+        searches = Search.objects.filter(user=request.user)
+    tags = Tag.objects.filter(search__user=request.user).distinct()
+    return render(request, "profile.html", {"tags": tags, "searches": searches})
 
 @login_required
-def search_detail(request):
-    return render(request, "search_detail.html")
-
-@login_required
-def search_detail_t(request):
-    return render(request, "search_detail.html")
+def search_detail(request, slug, id):
+    data = get_object_or_404(Search, slug=slug, pk=id)
+    return render(request, "search_detail.html", {"data": data})
 
 @login_required
 def logout(request):
