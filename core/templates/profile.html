@@ -5,10 +5,10 @@
 {% block content%}
 {% include "navbar.html" %}
 <main>
-    <h2 class="title"><span class="username">{{user.username}}</span> - Suas Pesquisas <i class="icon" data-lucide="laptop"></i> </h2>
+    <h2 class="title"><span class="username">@{{user.username}}</span> - Suas Pesquisas <i class="icon" data-lucide="laptop"></i> </h2>
     <div class="container-searches">
         <div class="container-search">
-            <form method="GET" action="{% url  'core:profile' %}" class="search-form">
+            <form method="GET" action="{% url 'core:profile' %}" class="search-form">
                 <input type="text" class="search-input" name="search" placeholder="DEXplore...">
                 <button type="submit" class="search-btn"><i class="search-icon" data-lucide="search-code"></i></button>
             </form>
@@ -18,14 +18,14 @@
             {% if tags %}
             {% for tag in tags %}
             <div class="tags">
-                <div class="tag">
+                <a href="{% url 'core:profile' %}?tag={{ tag.name }}" class="tag-link">
                     <i class="icon" data-lucide="tag"></i>
-                    <span class="tag-name">{{tag.name}}</span>
-                </div>
+                    <span class="tag-name">{{ tag.name }}</span>
+                </a>
                 {% endfor %}
             </div>
             {% else %}
-                <p>Você ainda não realizou nenhuma pesquisa, consequente ainda não possui filtro por tags</p>
+                <p style="margin:0 auto;">Você ainda não realizou nenhuma pesquisa, consequente ainda não possui filtro por tags</p>
             {% endif %}
         </div>
     </div>

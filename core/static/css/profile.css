@@ -93,6 +93,7 @@ main {
 }
 
 .tags-container {
+    flex-wrap: wrap;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,7 +111,8 @@ main {
     flex-wrap: wrap;
 }
 
-.tag {
+.tag-link {
+    text-decoration: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,8 +124,8 @@ main {
     transition: all 0.3s ease-in-out;
 }
 
-.tag:hover,
-.tag:focus {
+.tag-link:hover,
+.tag-link:focus {
     transform: scale(1.05);
     background-color: rgb(24, 22, 22);
 }

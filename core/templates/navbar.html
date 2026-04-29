@@ -1,11 +1,13 @@
 {% load static %}
 <header>
-    <div class="img-wrapper">
-        <img src="{% static 'images/dex-logo.png' %}" class="dex-logo" alt="DEX Logo">
-    </div>
+    <a href="{% url 'core:home' %}">
+        <div class="img-wrapper">
+            <img src="{% static 'images/dex-logo.png' %}" class="dex-logo" alt="DEX Logo">
+        </div>
+    </a>
     <nav class="navbar">
         {% if user.is_authenticated %}
-        <span class="username">{{user.username}}</span>
+        <span class="username">@{{user.username}}</span>
         <div class="nav-link-icon">
             <i class="icon" data-lucide="user"></i> 
             <a href="{% url 'core:profile' %}" class="nav-link">Perfil</a>

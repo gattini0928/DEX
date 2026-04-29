@@ -19,17 +19,17 @@ def home(request):
     if message:
         data = get_search(message)
         
-        tag, _ = Tag.objects.get_or_create(name=data["tag"])
-        
-        Search.objects.create(
-            user=request.user,
-            tag=tag,
-            query=message,
-            what_is=data["what_is"],
-            how_it_works=data["how_it_works"],
-            code_example=data["code_example"],
-            when_to_use=data["when_to_use"],
-        )
+        if request.user.is_authenticated:
+            tag, _ = Tag.objects.get_or_create(name=data["tag"])
+            Search.objects.create(
+                user=request.user,
+                tag=tag,
+                query=message,
+                what_is=data["what_is"],
+                how_it_works=data["how_it_works"],
+                code_example=data["code_example"],
+                when_to_use=data["when_to_use"],
+            )
 
     return render(request, "home.html", {"data": data})
 
@@ -64,7 +64,10 @@ def login(request):
 @login_required
 def profile(request):
     search_query = request.GET.get("search")
-    if search_query:
+    tag_filter = request.GET.get("tag")
+    if tag_filter:
+        searches = Search.objects.filter(user=request.user, tag__name=tag_filter)
+    elif search_query:
         searches = Search.objects.filter(user=request.user, query__icontains=search_query)
     else:
         searches = Search.objects.filter(user=request.user)

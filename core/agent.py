@@ -6,18 +6,21 @@ import re
 llm = OllamaLLM(model="mistral", temperature=0)
 
 instructions = """
-Você é um assistente de busca sobre tópicos de programação.
-Resuma o tópico perguntado com contexto completo, separando em 4 partes.
+You are a technical programming assistant.
+Answer the user's question about a programming topic.
+Be detailed and complete.
 
-Retorne APENAS um JSON válido, sem texto adicional, sem markdown, sem backticks.
-Todos os campos são OBRIGATÓRIOS. Não omita nenhum.
+Always answer in Portuguese.
+
+Return ONLY a valid JSON, no extra text, no markdown, no backticks.
+All fields are REQUIRED.
 
 {
-    "what_is": "O que é o conceito",
-    "how_it_works": "Como funciona",
-    "code_example": "Código de exemplo",
-    "when_to_use": "Quando usar",
-    "tag": "Tecnologia principal. OBRIGATÓRIO. Exemplos: Go, Python, SQL, PostgreSQL, Docker, JWT, Redis. Se não identificar, retorne General"
+    "what_is": "Clear explanation of the concept",
+    "how_it_works": "How it works in detail",
+    "code_example": "Practical code example",
+    "when_to_use": "When to use it",
+    "tag": "Main technology (Go, Python, SQL, PostgreSQL, Docker, JWT, Redis, REST API, GraphQL, Rust, Ruby, Java, C++, C, C#, Django, Pandas, Flask, JavaScript, TypeScript, Lua, React, VueJS, Angular, General)"
 }
 """
 
@@ -28,14 +31,12 @@ def search(message: str):
     ]
 
     response = llm.invoke(conversation)
-
     cleaned = re.sub(r"```json|```", "", response).strip()
-    parsed_json_agent_response = json.loads(cleaned)
+    print(cleaned)
 
     try:
         parsed = json.loads(cleaned)
         return parsed
     except json.JSONDecodeError:
         return "Erro ao decodificar JSON"
-    return parsed_json_agent_response
 
