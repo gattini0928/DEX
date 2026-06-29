@@ -3,7 +3,29 @@
 Plataforma de pesquisa técnica para desenvolvedores com IA local.
 Pesquise conceitos de programação e receba respostas estruturadas com explicação, código e contexto de uso. Todas as pesquisas ficam salvas no seu histórico pessoal.
 
-Projeto que pode ficar mais robusto conforme uso de IA paga para prompts mais dinâmicos e adaptativos deixando o software mais versátil.
+O projeto foi desenvolvido utilizando IA local (Ollama) para não depender de APIs pagas. A arquitetura permite evoluir futuramente para modelos comerciais, tornando as respostas mais dinâmicas e adaptativas.
+
+## Screenshots
+
+### Signup
+
+![Signup](screenshots/signup.png)
+
+### Login
+
+![Login](screenshots/login.png)
+
+### Home
+
+![Home](screenshots/home.png)
+
+### Resultado da pesquisa
+
+![Search](screenshots/search.png)
+
+### Perfil
+
+![Profile](screenshots/profile.png)
 
 ## Tecnologias
 
