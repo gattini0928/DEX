@@ -32,11 +32,10 @@ def search(message: str):
 
     response = llm.invoke(conversation)
     cleaned = re.sub(r"```json|```", "", response).strip()
-    print(cleaned)
 
     try:
         parsed = json.loads(cleaned)
         return parsed
     except json.JSONDecodeError:
-        return "Erro ao decodificar JSON"
+        return None
 

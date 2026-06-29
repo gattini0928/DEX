@@ -5,7 +5,7 @@ from django.utils.text import slugify
 User = get_user_model()
 
 class Tag(models.Model):
-    name = models.CharField(blank=False, null=False)
+    name = models.CharField(blank=False, null=False, max_length=20)
 
     def __str__(self):
         return self.name
